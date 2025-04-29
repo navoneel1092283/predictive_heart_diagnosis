@@ -25,7 +25,16 @@ st.dataframe(features_df)
 
 # Step 4: Display the predicted probability
 st.subheader("📈 Predicted Heart Disease Risk")
-st.success(f"Predicted Probability: {predicted_prob:.2%}")
+if float(predicted_prob) >= 0.7:
+    st.error(f"Predicted Probability: {predicted_prob:.2%}")
+
+elif float(predicted_prob) > 0.5 and float(predicted_prob) < 0.7:
+    st.warning(f"Predicted Probability: {predicted_prob:.2%}")
+
+else:
+    st.success(f"Predicted Probability: {predicted_prob:.2%}")
+
+
 
 st.markdown("---")
 
