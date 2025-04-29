@@ -13,9 +13,11 @@ RUN apt-get update && apt-get install -y \
   build-essential \
   && rm -rf /var/lib/apt/lists/*
 
-# Copy project files into the container
+# Copy all required files into the container
 COPY requirements.txt .
 COPY app.py .
+COPY model.joblib .
+COPY ohe.joblib .
 COPY pages/ ./pages/
 
 # Install Python dependencies
@@ -31,3 +33,4 @@ ENV STREAMLIT_SERVER_ENABLECORS=false
 
 # Run Streamlit
 CMD ["streamlit", "run", "app.py"]
+
